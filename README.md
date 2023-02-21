@@ -47,8 +47,4 @@
 
 ### 💾 사이드 프로젝트
 
-<div align="center">
-
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Jimoou&show_icons=true&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
-
-</div>
