@@ -1,50 +1,42 @@
 # 🧑🏻‍🚀 김지운 Kim Ji Woon
 
-<div align="left">
-<a href="https://jimoou.github.io/" target="_blank"><img src="https://img.shields.io/badge/GitHub Pages-222222?style=for-the-badge&logo=GitHub Pages&logoColor=white"/></a>
+<p align="center">
 
-<a href="kfromh0136@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=Gmail&logoColor=white"/></a>
-<a href="kfromh0136@naver.com" target="_blank"><img src="https://img.shields.io/badge/Naver-03C75A?style=for-the-badge&logo=Naver&logoColor=white"/></a>
+<a href="https://github.com/Jimoou">
+    <img src="https://github-stats-alpha.vercel.app/api?username=Jimoou&cc=fff&tc=000000&ic=000000&bc=ffffff">
+</a>
 
-</div>
+</p>
 
-## 🤹🏻 스택
+## 👨‍💻 소개
 
-<div style="display:flex;">
+저는 Java 개발자로 시작하여 현재 클라우드 컴퓨팅에 관심을 가지고 있으며, 클라우드 엔지니어로 성장하려고 노력하고 있습니다.
 
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black" style="margin-right:5px;">
+### 📫 연락처
 
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black" style="margin-right:5px;">
+- Gmail: [kfromh0136@gmail.com](mailto:kfromh0136@gmail.com)
+- Naver Mail: [kfromh0136@naver.com](mailto:kfromh0136@naver.com)
 
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=black">
+## 🛠 기술 스택
 
-</div>
+<p align="left">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original-wordmark.svg" alt="spring" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="git" width="40" height="40"/>
+</p>
 
-<div style="display:flex;">
+## 📚 프로젝트
 
-<img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=black" style="margin-right:5px;">
+### 팀 프로젝트
 
-<img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=black" style="margin-right:5px;">
+- **[Book Hub Project](https://github.com/udemy-final-team2/Book-Hub-Project)**: Udemy Starters 부트캠프에서 협업한 프로젝트로, 깃, 커밋 컨벤션을 정하고, 애자일 프로세스를 도입한 협업 프로젝트입니다.
 
-<img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=black">
+### 개인 프로젝트
 
-</div>
+- **[Price Compare Redis](https://github.com/Jimoou/price-compare-redis)**: Redis와 AWS EC2 인스턴스를 활용한 프로젝트로, Redis의 간단한 사용법과 구조 및 목적을 이해하기 위해 Spring Boot를 사용한 예제 프로젝트입니다.
 
-<div style="display:flex;">
-
-<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=black" style="margin-right:5px;">
-
-<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=black" style="margin-right:5px;">
-
-<img src="https://img.shields.io/badge/GitKraken-179287?style=for-the-badge&logo=GitKraken&logoColor=black">
-
-</div>
-
-
-## 🔥 프로젝트
-
-### 💻 메인 프로젝트
-
-### 💾 사이드 프로젝트
-
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Jimoou&show_icons=true&theme=radical)](https://github.com/anuraghazra/github-readme-stats)
+- **[Book Library Site Backend](https://github.com/Jimoou/BookLibrarySite-Backend)**: REST API를 이해하고, 설계하며, 오픈 소스를 활용해 보기 위한 프로젝트입니다.
