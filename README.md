@@ -40,3 +40,5 @@
 - **[Price Compare Redis](https://github.com/Jimoou/price-compare-redis)**: Redis와 AWS EC2 인스턴스를 활용한 프로젝트로, Redis의 간단한 사용법과 구조 및 목적을 이해하기 위해 Spring Boot를 사용한 예제 프로젝트입니다.
 
 - **[Book Library Site Backend](https://github.com/Jimoou/BookLibrarySite-Backend)**: REST API를 이해하고, 설계하며, 오픈 소스를 활용해 보기 위한 프로젝트입니다.
+
+- **[springboot-microservices](https://github.com/Jimoou/springboot-microservices)**: SpringCloud와 SpringBoot를 이용한 마이크로 서비스입니다.
