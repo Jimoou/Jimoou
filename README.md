@@ -1,4 +1,4 @@
-# 🧑🏻‍🚀 김지운 Kim Ji Woon
+# 🧑🏻‍🚀 김지운 Jiwoon Kim
 
 <p align="center">
 
