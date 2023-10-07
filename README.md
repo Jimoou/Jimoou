@@ -31,6 +31,7 @@
 - Gmail: [kfromh0136@gmail.com](mailto:kfromh0136@gmail.com)
 - Naver Mail: [kfromh0136@naver.com](mailto:kfromh0136@naver.com)
 - Blog
+  - https://jimoou.github.io/
   - https://woorifisa-final-project-f4.github.io/
 - Youtube
   - https://www.youtube.com/watch?v=gPHDBWXzIAg
