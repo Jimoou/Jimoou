@@ -1,21 +1,5 @@
 <div align="center">
 
-<!-- 타이핑 애니메이션 효과를 위한 SVG -->
-<svg viewBox="0 0 800 100" xmlns="http://www.w3.org/2000/svg">
-  <text y="50" font-size="30" fill="#333" font-family="Arial, sans-serif">
-    <tspan>안녕하세요, </tspan>
-    <tspan fill="url(#gradient)" font-weight="bold">김지운</tspan>
-    <tspan>입니다 👋</tspan>
-    <animate attributeName="opacity" from="0" to="1" dur="2s" fill="freeze" />
-  </text>
-  <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-</svg>
-
 <!-- 움직이는 배경 패턴 -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=100&section=header&animation=fadeIn" width="100%"/>
 
@@ -255,9 +239,9 @@
 
 </div>
 
-<!-- 움직이는 푸터 -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=100&section=footer&animation=fadeIn" width="100%"/>
-
 <div align="center">
   <i>항상 새로운 기술을 배우고 성장하는 개발자가 되겠습니다.</i>
 </div>
+
+<!-- 움직이는 푸터 -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=100&section=footer&animation=fadeIn" width="100%"/>
