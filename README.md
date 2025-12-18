@@ -174,19 +174,6 @@
 
 <div align="left">
 
-### Grapipe
-
-**Workflow 자동화 솔루션** | _진행중_
-
-- **기술 스택**: Node.js, Go, Redis, MSA
-- **주요 기능**:
-  - 마이크로서비스 기반 워크플로우 자동화
-  - Redis를 활용한 작업 큐 및 상태 관리
-  - 다중 언어 서비스 통합 (Node.js + Go)
-- **링크**: [GitHub](https://github.com/asaimble) (Private)
-
----
-
 ### ArteModerni
 
 **MSA 미술품 경매거래 플랫폼** | _2023.08 - 2023.09_
