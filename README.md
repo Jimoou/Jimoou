@@ -36,7 +36,6 @@
 <!-- 소셜 링크 with hover 효과 -->
 
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:kfromh0136@gmail.com)
-[![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white)](https://spangled-smell-eb2.notion.site/102b72f066c880a781d1e7e71a9dfd12?pvs=74)
 [![Blog](https://img.shields.io/badge/Blog-FF5722?style=for-the-badge&logo=blogger&logoColor=white)](https://jimoou.github.io/)
 
 </div>
