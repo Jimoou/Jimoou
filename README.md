@@ -94,7 +94,7 @@
 <summary><b>매입 배치 아키텍처 개선</b> - 장애 격리 (기여도 100%)</summary>
 
 - **기간**: 2025.12 - 2026.01
-- **기술**: Java, MyBatis Batch, EventBus, Graceful Shutdown
+- **기술**: Java, MyBatis Batch, EventBus
 - **문제 상황**:
   - For문 내 단건 실패 시 전체 배치가 무한 실패하는 구조
   - 2초 Interval Daemon 구조로 처리 지연 시 주기 불규칙
@@ -104,7 +104,6 @@
   - 에러 격리 테이블과 재시도 상한(3회)으로 장애 전파 차단
   - MyBatis BATCH 모드로 대량 INSERT 성능 최적화
   - FDS를 EventBus 기반 비동기로 분리, 트랜잭션 경계 축소
-  - Graceful Shutdown으로 진행 중 작업 안전 종료 보장
 - **성과**: 단건 오류가 전체에 영향 없는 구조로 개선, 장애 복구 시간 대폭 단축
 - **관련글**: [크리스마스에 터진 매입 장애, 아키텍처로 해결하다](https://jimoou.github.io/backend/2025/12/29/post57.html)
 
@@ -114,7 +113,7 @@
 <summary><b>가맹점 인증/인가 시스템 마이그레이션</b> - Spring Security 4.2.5 도입 (기여도 100%)</summary>
 
 - **기간**: 2025.12
-- **기술**: Spring Security, Session, Google OTP, Nginx
+- **기술**: Spring Security, Session
 - **문제 상황**:
   - SessionInterceptor 단일 의존, 세션 관리 DB 테이블 부재
   - 클라이언트 주도 세션 타임아웃 처리로 보안 취약
@@ -133,7 +132,7 @@
 <summary><b>대용량 데이터 조회 성능 최적화</b> - N+1 쿼리 문제 해결 (기여도 100%)</summary>
 
 - **기간**: 2025.09 - 2025.10
-- **기술**: MariaDB, SQL, INDEX, Query Profiling
+- **기술**: MariaDB, SQL, INDEX
 - **문제 상황**:
   - 매입내역 조회 시 4만건 로딩에 30초 소요 (VIEW 남용, N+1 문제)
   - 승인내역 조회 시 4만건 로딩에 43초 소요 (JOIN 키 인덱스 부재)
@@ -180,8 +179,7 @@
 - **기술**: Java, Spring Transaction Manager, JdbcTemplate, ThreadLocal, HikariCP
 - **문제 상황**:
   - 지급대행 서비스 신규 개발시 입출금 내역과 잔액 업데이트 시 트랜잭션 미보장으로 금액 불일치 위험
-  - 디컴파일된 협력사 DAO 라이브러리가 Auto Commit 모드로 작동하여 부분 실패 시 롤백 불가능
-  - @Transactional 무효화 (AutoCommit=true)
+  - 디컴파일된 레거시 DAO 라이브러리가 Auto Commit 모드로 작동하여 부분 실패 시 롤백 불가능
   - 레거시 DAO의 Statement 사용 및 문자열 결합 방식의 보안 취약점 확인
 - **해결 과정**:
   - 디컴파일을 통한 레거시 라이브러리 동작 원리 분석
@@ -197,7 +195,7 @@
 <summary><b>차액정산 시스템 현대화</b> - Spring Batch 기반 재설계 (기여도 100%)</summary>
 
 - **기간**: 2025.05
-- **기술**: Spring Batch, Quartz, Java, MySQL, AWS S3
+- **기술**: Spring Batch, Quartz, Java, MySQL
 - **문제 상황**:
   - R-JAVA/쉘스크립트/크론탭으로 운영되던 레거시 시스템의 불안정성
   - PG사별 상이한 가이드라인으로 인한 코드 중복 및 개별 결과 테이블 관리
