@@ -94,16 +94,17 @@
 <summary><b>매입 배치 아키텍처 개선</b> - 장애 격리 (기여도 100%)</summary>
 
 - **기간**: 2025.12 - 2026.01
-- **기술**: Java, MyBatis Batch, EventBus
+- **기술**: Java, MyBatis Batch, EventBus, Graceful Shutdown
 - **문제 상황**:
   - For문 내 단건 실패 시 전체 배치가 무한 실패하는 구조
   - 2초 Interval Daemon 구조로 처리 지연 시 주기 불규칙
   - 에러 알람 부재로 장애 인지까지 시간 지연
 - **해결 과정**:
   - Fail-Fast 검증 패턴으로 For문 진입 전 조기 실패 감지
-  - 에러 격리 테이블과 재시도 상한(3회)으로 장애 전파 차단
+  - 에러 격리 테이블과 재시도 상한(5회)으로 장애 전파 차단
   - MyBatis BATCH 모드로 대량 INSERT 성능 최적화
   - FDS를 EventBus 기반 비동기로 분리, 트랜잭션 경계 축소
+  - Graceful Shutdown으로 진행 중 작업 안전 종료 보장
 - **성과**: 단건 오류가 전체에 영향 없는 구조로 개선, 장애 복구 시간 대폭 단축
 - **관련글**: [크리스마스에 터진 매입 장애, 아키텍처로 해결하다](https://jimoou.github.io/backend/2025/12/29/post57.html)
 
@@ -113,7 +114,7 @@
 <summary><b>가맹점 인증/인가 시스템 마이그레이션</b> - Spring Security 4.2.5 도입 (기여도 100%)</summary>
 
 - **기간**: 2025.12
-- **기술**: Spring Security, Session
+- **기술**: Spring Security, Session, Google OTP, Nginx
 - **문제 상황**:
   - SessionInterceptor 단일 의존, 세션 관리 DB 테이블 부재
   - 클라이언트 주도 세션 타임아웃 처리로 보안 취약
@@ -123,6 +124,7 @@
   - 커스텀 SessionFilter로 Referer 검증, Forced Browsing 차단
   - UserDetails 상속으로 레거시 JSP 세션 객체 호환 유지
   - 파일 다운로드 경로 노출 방지 (임시 토큰 방식 전환)
+- **배포 전략**: 무중단 배포 미지원 환경에서 개발 서버는 마이크로 리팩토링, 운영 서버는 그랜드 리팩토링 방식 적용
 - **성과**: Forced Browsing/파라미터 변조 차단, 표준 인증 체계 구축, 보안취약점 점검 기준 통과
 - **관련글**: [레거시 인증/인가 시스템 Spring Security 4.2.5로 마이그레이션 하기](https://jimoou.github.io/backend/2025/12/15/post49.html) | [Spring redirect와 리버스 프록시의 함정](https://jimoou.github.io/backend/2025/12/17/post51.html)
 
@@ -132,7 +134,7 @@
 <summary><b>대용량 데이터 조회 성능 최적화</b> - N+1 쿼리 문제 해결 (기여도 100%)</summary>
 
 - **기간**: 2025.09 - 2025.10
-- **기술**: MariaDB, SQL, INDEX
+- **기술**: MariaDB, SQL, INDEX, Query Profiling
 - **문제 상황**:
   - 매입내역 조회 시 4만건 로딩에 30초 소요 (VIEW 남용, N+1 문제)
   - 승인내역 조회 시 4만건 로딩에 43초 소요 (JOIN 키 인덱스 부재)
@@ -150,16 +152,18 @@
 <summary><b>실시간 정산/지급대행 Batch 재설계</b> (기여도 100%)</summary>
 
 - **기간**: 2025.08
-- **기술**: Java, Thread, Daemon, MariaDB
+- **기술**: Java, Thread, Daemon, ExecutorService, MariaDB
 - **문제 상황**:
-  - 실시간 정산/가맹점 지급대행 Batch 모듈이 분리되어 각각 10초와 5분으로 동작
-  - 분리된 동작으로 인해 가맹점 계정 계좌에 존재하는 잔액 차이로 간헐적 이체 실패 및 민원 발생
+  - 정산 배치와 지급 이체 모듈이 분리되어 "사이클 간극" 발생
+  - "작업 완료 후 대기" 방식으로 정산 완료 시점 예측 불가
+  - 5분 정산 설정인데 실제로는 10~13분 소요되어 가맹점 민원 발생
 - **해결 과정**:
-  - 분리된 모듈 통합작업 실행
-  - Thread, Daemon으로 순차적 실행 보장
-  - 레거시 시스템에서 개별 Connection을 사용한 배치작업을 통해 트랜잭션 개별 관리
-- **성과**: 실시간정산/지급대행 사용시 5분 정산(실제 10~13분 뒤 지급)을 5분 정산(실제 5분 뒤 지급)으로 단축, 가맹점 민원 감소
-- **관련글**: [금융 결제 시스템에서 TimeoutException 완전 정복하기](https://jimoou.github.io/backend/2025/07/29/post35.html)
+  - 정산 데이터 생성 → 잔액 증대를 하나의 흐름으로 통합
+  - "작업 완료 후 대기" → "5분 간격 정각 실행" 방식으로 변경
+  - 지급 이체 모듈에 Thread Pool 기반 병렬 처리 구조 추가
+  - 건별 트랜잭션으로 실패 건 재처리 용이하게 설계
+- **성과**: 5분 정산이 실제로 5분 뒤에 완료되도록 개선, 가맹점 민원 감소
+- **관련글**: [실시간 정산/지급대행 배치 리팩토링기](https://jimoou.github.io/java/2025/08/06/post37.html)
 
 </details>
 
@@ -179,7 +183,8 @@
 - **기술**: Java, Spring Transaction Manager, JdbcTemplate, ThreadLocal, HikariCP
 - **문제 상황**:
   - 지급대행 서비스 신규 개발시 입출금 내역과 잔액 업데이트 시 트랜잭션 미보장으로 금액 불일치 위험
-  - 디컴파일된 레거시 DAO 라이브러리가 Auto Commit 모드로 작동하여 부분 실패 시 롤백 불가능
+  - 디컴파일된 협력사 DAO 라이브러리가 Auto Commit 모드로 작동하여 부분 실패 시 롤백 불가능
+  - @Transactional 무효화 (AutoCommit=true)
   - 레거시 DAO의 Statement 사용 및 문자열 결합 방식의 보안 취약점 확인
 - **해결 과정**:
   - 디컴파일을 통한 레거시 라이브러리 동작 원리 분석
@@ -195,7 +200,7 @@
 <summary><b>차액정산 시스템 현대화</b> - Spring Batch 기반 재설계 (기여도 100%)</summary>
 
 - **기간**: 2025.05
-- **기술**: Spring Batch, Quartz, Java, MySQL
+- **기술**: Spring Batch, Quartz, Java, MySQL, AWS S3
 - **문제 상황**:
   - R-JAVA/쉘스크립트/크론탭으로 운영되던 레거시 시스템의 불안정성
   - PG사별 상이한 가이드라인으로 인한 코드 중복 및 개별 결과 테이블 관리
@@ -206,7 +211,7 @@
   - PG사별 인터페이스 추상화로 PG사 추가 시 기존 Task 수정 없이 구현체만 추가하는 구조 확립
   - PG사별 결과 테이블을 통합 테이블로 일원화
 - **성과**: PG사 추가 소요 시간 3주 → 1일 (95% 단축, 테스트 기간 제외), 아웃소싱 비용 절감
-- **관련글**: [Spring Batch ExecutionContext 저장 오류 해결기](https://jimoou.github.io/java/2025/06/30/post34.html) | [배치 작업의 불편한 진실](https://jimoou.github.io/java/2025/08/06/post37.html)
+- **관련글**: [레거시 차액정산 시스템을 Spring Batch로 현대화하기](https://jimoou.github.io/backend/2025/06/30/post34.html)
 
 </details>
 
