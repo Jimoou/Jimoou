@@ -104,7 +104,6 @@
   - 에러 격리 테이블과 재시도 상한(5회)으로 장애 전파 차단
   - MyBatis BATCH 모드로 대량 INSERT 성능 최적화
   - FDS를 EventBus 기반 비동기로 분리, 트랜잭션 경계 축소
-  - Graceful Shutdown으로 진행 중 작업 안전 종료 보장
 - **성과**: 단건 오류가 전체에 영향 없는 구조로 개선, 장애 복구 시간 대폭 단축
 - **관련글**: [크리스마스에 터진 매입 장애, 아키텍처로 해결하다](https://jimoou.github.io/backend/2025/12/29/post57.html)
 
@@ -133,7 +132,7 @@
 <details>
 <summary><b>대용량 데이터 조회 성능 최적화</b> - N+1 쿼리 문제 해결 (기여도 100%)</summary>
 
-- **기간**: 2025.09 - 2025.10
+- **기간**: 2025.09
 - **기술**: MariaDB, SQL, INDEX, Query Profiling
 - **문제 상황**:
   - 매입내역 조회 시 4만건 로딩에 30초 소요 (VIEW 남용, N+1 문제)
@@ -179,7 +178,7 @@
 <details>
 <summary><b>레거시 DAO의 트랜잭션 문제 해결</b> (기여도 100%)</summary>
 
-- **기간**: 2025.06
+- **기간**: 2025.05
 - **기술**: Java, Spring Transaction Manager, JdbcTemplate, ThreadLocal, HikariCP
 - **문제 상황**:
   - 지급대행 서비스 신규 개발시 입출금 내역과 잔액 업데이트 시 트랜잭션 미보장으로 금액 불일치 위험
@@ -202,7 +201,7 @@
 - **기간**: 2025.05
 - **기술**: Spring Batch, Quartz, Java, MySQL, AWS S3
 - **문제 상황**:
-  - R-JAVA/쉘스크립트/크론탭으로 운영되던 레거시 시스템의 불안정성
+  - 크론탭/쉘스크립트 기반 Plain Java로 운영되던 레거시 시스템의 불안정성
   - PG사별 상이한 가이드라인으로 인한 코드 중복 및 개별 결과 테이블 관리
   - 신규 PG사 추가 시 차액정산 과정 전체 코드 재작성 필요로 테스트 포함 3주의 개발 기간 소요
 - **해결 과정**:
@@ -282,8 +281,6 @@
 <div align="left">
 
 ### 📚 Boot Camp
-
-- **TOSS Learner's High 2기** (2025.12.16 ~ 2026.01.16)
 
 - **WOORI FIS ACADEMY 1기 Cloud Engineering** (2023.04 - 2023.09)
   - 핀테크 IT 인재 양성 교육 과정
